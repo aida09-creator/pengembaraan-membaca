@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pengembaraan Membaca – Kefahaman Tahun 6</title>
+<style>
+:root{--ink:#1d2b53;--card:#fffdf5;--sun:#ffd23f;--pink:#ff6fa5;--ok:#2bb673;--bad:#ef5350;--orange:#ff9f1c;--purple:#7c4dff;--sky:#4fc3f7;color-scheme:light;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:"Comic Sans MS","Comic Sans","Comic Neue","Chalkboard SE",cursive,sans-serif;color:var(--ink);font-size:clamp(16px,2.4vw,19px)}
+body{background:linear-gradient(#4fc3f7,#c8f0ff 65%,#eaffd0);background-attachment:fixed;min-height:100vh;position:relative;overflow-x:hidden}
+.sun{position:fixed;top:12px;right:16px;font-size:clamp(46px,9vw,72px);animation:spin 40s linear infinite;z-index:0}
+.cloud{position:fixed;font-size:60px;opacity:.9;z-index:0;animation:drift 40s linear infinite}
+.c1{top:60px;left:-80px}.c2{top:150px;left:-80px;animation-duration:58s;animation-delay:-22s;font-size:44px}
+.balloon{position:fixed;bottom:-60px;font-size:40px;z-index:0;animation:float 16s linear infinite;pointer-events:none}
+@keyframes drift{to{transform:translateX(120vw)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes float{to{transform:translateY(-120vh) rotate(12deg)}}
+.hills{position:fixed;bottom:0;left:0;width:100%;height:140px;z-index:0;pointer-events:none}
+.deco{position:fixed;bottom:10px;font-size:42px;z-index:0;pointer-events:none}
+main{position:relative;z-index:1;max-width:1000px;margin:0 auto;padding:14px 14px 150px}
+.narrow{max-width:760px;margin:0 auto}
+.card{background:var(--card);border:4px solid var(--ink);border-radius:26px;padding:18px;box-shadow:0 7px 0 var(--ink);margin-bottom:18px;animation:rise .45s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:none}}
+h1{font-size:clamp(1.9rem,6vw,2.6rem);line-height:1.05;margin:6px 0;font-weight:800;color:#e8336d;text-shadow:3px 3px 0 #fff}
+h2{margin:0 0 8px;font-size:1.3rem}
+.center{text-align:center}
+.mascot{font-size:clamp(70px,16vw,96px);line-height:1;animation:bob 2s ease-in-out infinite;display:inline-block}
+@keyframes bob{50%{transform:translateY(-12px) rotate(-3deg)}}
+.btn{font:inherit;font-weight:800;font-size:1.2rem;color:#fff;background:linear-gradient(#ffb74d,#ff8f00);border:4px solid var(--ink);border-radius:22px;padding:10px 28px;min-height:52px;cursor:pointer;box-shadow:0 6px 0 var(--ink);transition:transform .08s,box-shadow .08s}
+.btn:hover{filter:brightness(1.07)}
+.btn:active{transform:translateY(5px);box-shadow:0 1px 0 var(--ink)}
+.btn.green{background:linear-gradient(#52d98f,#1fa463)}
+.btn:focus-visible,.opt:focus-visible,.pc:focus-visible,.mute:focus-visible{outline:4px solid var(--purple);outline-offset:3px}
+.hud{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;max-width:760px;margin-left:auto;margin-right:auto}
+.pill{flex:1;min-width:84px;text-align:center;background:#fff;border:4px solid var(--ink);border-radius:18px;padding:2px 8px;font-weight:800;box-shadow:0 4px 0 var(--ink)}
+.pill small{display:block;font-size:.7rem;font-weight:700;opacity:.7;margin-bottom:-4px}
+.pill.bump{animation:bump .45s}
+@keyframes bump{40%{transform:scale(1.18) rotate(-3deg);background:#fff3b0}}
+.mute{flex:0 0 56px;font:inherit;font-size:1.5rem;background:#fff;border:4px solid var(--ink);border-radius:18px;box-shadow:0 4px 0 var(--ink);cursor:pointer}
+.bar{display:flex;gap:6px;margin-bottom:14px;max-width:760px;margin-left:auto;margin-right:auto}
+.bar i{flex:1;height:16px;border:3px solid var(--ink);border-radius:10px;background:#fff;transition:background .3s,transform .3s}
+.bar i.on{background:linear-gradient(90deg,var(--pink),var(--sun))}
+.bar i.cur{transform:scaleY(1.35);background:#b3e5fc}
+.playgrid{display:grid;gap:0 18px}
+@media(min-width:900px){.playgrid{grid-template-columns:1.05fr 1fr;align-items:start}}
+.pic{max-width:440px;margin:0 auto 10px}
+.pic svg,.pc svg{width:100%;height:auto;border-radius:16px;border:3px solid var(--ink);display:block}
+.passage{background:#fff8d6;border:3px dashed var(--orange);border-radius:18px;padding:12px 14px;font-size:1.1rem;line-height:1.7}
+.q{font-size:clamp(1.2rem,3.4vw,1.45rem);font-weight:800;margin:4px 0 12px;line-height:1.3}
+.opt{display:flex;align-items:center;gap:10px;width:100%;text-align:left;font:inherit;font-size:1.15rem;font-weight:700;color:var(--ink);background:#fff;border:4px solid var(--ink);border-radius:18px;padding:10px 14px;min-height:56px;margin-bottom:10px;cursor:pointer;box-shadow:0 5px 0 var(--ink);transition:transform .1s,background .2s}
+.opt b{display:grid;place-items:center;min-width:38px;height:38px;border-radius:50%;border:3px solid var(--ink);flex:none}
+.opt:nth-child(1) b{background:#ff9ec4}.opt:nth-child(2) b{background:#8fd3ff}.opt:nth-child(3) b{background:#a5ec8f}
+.opt:not(:disabled):hover{background:#eaf7ff;transform:translateY(-2px)}
+.opt:disabled{cursor:default}
+.opt.right{background:#c9f5dc;border-color:var(--ok);animation:jump .55s}
+.opt.wrong{background:#ffd6d4;border-color:var(--bad);animation:shake .45s}
+@keyframes jump{40%{transform:translateY(-8px) scale(1.03)}}
+@keyframes shake{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.fbrow{display:flex;gap:10px;align-items:center;min-height:50px;margin:4px 0 8px}
+.owl{font-size:2.4rem;line-height:1}.owl.ok{animation:jump .6s}.owl.no{animation:shake .5s}
+.fb{font-size:1.15rem;font-weight:800}
+.pop{position:fixed;left:50%;top:38%;font-size:72px;z-index:50;pointer-events:none;animation:up 1s forwards;font-weight:800;color:#ff8f00;text-shadow:3px 3px 0 #fff}
+@keyframes up{from{transform:translate(-50%,0) scale(.5);opacity:1}to{transform:translate(-50%,-130px) scale(1.4);opacity:0}}
+.menu{display:grid;gap:16px;grid-template-columns:1fr 1fr}
+@media(max-width:600px){.menu{grid-template-columns:1fr}}
+.pc{font:inherit;color:var(--ink);text-align:center;background:var(--card);border:4px solid var(--ink);border-radius:24px;padding:10px;box-shadow:0 7px 0 var(--ink);cursor:pointer;transition:transform .15s}
+.pc:not(:disabled):hover{transform:translateY(-6px) rotate(-1deg)}
+.pc:disabled{cursor:default;background:#e3f9e5}
+.pc h3{margin:6px 0 2px;font-size:1.25rem}
+.tag{display:inline-block;margin-top:4px;font-weight:700;background:var(--sun);border:3px solid var(--ink);border-radius:14px;padding:2px 12px}
+.banner{background:#fff;border:4px dashed var(--ok);border-radius:18px;padding:8px 12px;font-weight:700;margin:8px 0;font-size:1.1rem}
+.legend{text-align:left;font-size:1.05rem;line-height:1.7;background:#fff;border:3px solid var(--ink);border-radius:20px;padding:12px 16px;margin:10px 0 16px}
+.ringwrap{position:relative;width:min(220px,60vw);margin:6px auto}
+.ring{width:100%;display:block}.ring circle:last-child{transition:stroke-dashoffset 1.4s ease}
+.rtxt{position:absolute;inset:0;display:grid;place-content:center;font-weight:800;font-size:3rem;line-height:1;text-align:center}
+.rtxt small{font-size:1rem;opacity:.7}
+.stars{font-size:clamp(2rem,9vw,3rem);letter-spacing:4px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0}
+.stat{background:#fff;border:3px solid var(--ink);border-radius:16px;padding:6px;font-weight:800;font-size:1.4rem}
+.stat small{display:block;font-size:.75rem;font-weight:700;opacity:.7}
+.bgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(125px,1fr));gap:10px;margin:10px 0 18px}
+.bd{background:#fff;border:3px solid var(--ink);border-radius:16px;padding:8px 6px;text-align:center;font-weight:700;font-size:.85rem;line-height:1.2}
+.bd .ic{font-size:2.2rem;display:block}
+.bd.on{background:#fff6c9;animation:jump .7s both}
+.bd.off{filter:grayscale(1);opacity:.5}
+.toasts{position:fixed;top:calc(10px + env(safe-area-inset-top,0px));left:0;right:0;z-index:60;display:grid;justify-items:center;gap:8px;pointer-events:none}
+.toast{display:flex;gap:12px;align-items:center;background:#fff6c9;border:4px solid var(--ink);border-radius:20px;padding:8px 16px;box-shadow:0 5px 0 var(--ink);font-weight:700;animation:drop .5s both,out .4s 2.7s forwards}
+.toast .ti{font-size:2.4rem}
+@keyframes drop{from{transform:translateY(-90px);opacity:0}}
+@keyframes out{to{transform:translateY(-90px);opacity:0}}
+.cf{position:fixed;top:-40px;z-index:70;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(540deg)}}
+.hide{display:none!important}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01s!important;animation-iteration-count:1!important;transition-duration:.01s!important}}
+</style>
+</head>
+<body>
+<div class="sun" aria-hidden="true">☀️</div>
+<div class="cloud c1" aria-hidden="true">☁️</div>
+<div class="cloud c2" aria-hidden="true">☁️</div>
+<div class="balloon" style="left:8%" aria-hidden="true">🎈</div>
+<div class="balloon" style="left:78%;animation-delay:-8s" aria-hidden="true">🎈</div>
+<svg class="hills" viewBox="0 0 800 150" preserveAspectRatio="none" aria-hidden="true">
+<path d="M0 70 Q150 10 300 65 T600 55 T800 60 V150 H0Z" fill="#5fcf5f"/>
+<path d="M0 105 Q200 55 400 100 T800 90 V150 H0Z" fill="#3fb34f"/></svg>
+<div class="deco" style="left:10px" aria-hidden="true">🌳</div>
+<div class="deco" style="left:30%" aria-hidden="true">🌼</div>
+<div class="deco" style="right:30%" aria-hidden="true">🦋</div>
+<div class="deco" style="right:10px" aria-hidden="true">🏫</div>
+<div class="toasts" id="toasts" aria-live="polite"></div>
+
+<main>
+<div id="hud" class="hud hide">
+  <div class="pill" id="pscore"><small>⭐ Markah</small><span><span id="score">0</span>/50</span></div>
+  <div class="pill"><small id="qlab">Petikan</small><span id="qn">0/2</span></div>
+  <div class="pill"><small>🔥 Rentak</small><span id="streak">0</span></div>
+  <div class="pill"><small>🏅 Lencana</small><span id="bcount">0</span>/7</div>
+  <button class="mute" id="mmute" aria-pressed="false" aria-label="Muzik hidup">🎵</button>
+  <button class="mute" id="mute" aria-pressed="false" aria-label="Bunyi hidup">🔊</button>
+</div>
+
+<section id="start" class="card center narrow">
+  <div class="mascot" aria-hidden="true">🦉</div>
+  <h1>Pengembaraan Membaca!</h1>
+  <p style="margin:4px 0 10px;font-weight:700">Baca petikan, jawab soalan, kumpul markah dan lencana! 🌈</p>
+  <div class="legend">
+    📖 <b>2 petikan</b>: pilih satu, siapkan, kemudian pilih yang kedua<br>
+    📝 Setiap petikan ada <b>5 soalan</b><br>
+    ✅ Jawapan betul = <b>5 markah</b>. Markah penuh = <b>50</b><br>
+    🔥 Jawab betul berturut-turut untuk dapat <b>rentak</b><br>
+    🏅 Kumpul <b>7 lencana</b> pencapaian!<br>
+    🐢 Tiada had masa. Baca dengan teliti ya!<br>
+    🎵 Ada muzik latar yang santai. Boleh dimatikan dengan butang 🎵
+  </div>
+  <button class="btn" id="go">Mula Bermain! 🚀</button>
+</section>
+
+<section id="menu" class="hide narrow" style="max-width:none">
+  <div class="card center narrow"><div class="mascot" style="font-size:60px" aria-hidden="true">🦉</div>
+  <h2 style="font-size:1.6rem">Pilih Petikan!</h2><div id="banner" class="banner hide"></div>
+  <p style="margin:0;font-weight:700">Klik satu petikan, jawab 5 soalan, kemudian pilih petikan seterusnya.</p></div>
+  <div class="menu narrow" id="menugrid"></div>
+</section>
+
+<section id="play" class="hide">
+  <div class="bar" id="bar" aria-hidden="true"></div>
+  <div class="playgrid">
+    <div class="card">
+      <h2 id="ptitle"></h2>
+      <div class="pic" id="pic"></div>
+      <div class="passage" id="ptext" tabindex="0"></div>
+    </div>
+    <div class="card">
+      <div class="q" id="qtext"></div>
+      <div id="opts"></div>
+      <div class="fbrow"><span class="owl" id="owl" aria-hidden="true">🦉</span><div class="fb" id="fb" aria-live="polite"></div></div>
+      <div class="center"><button class="btn green hide" id="next">Seterusnya ➡️</button></div>
+    </div>
+  </div>
+</section>
+
+<section id="end" class="hide narrow">
+  <div class="card center">
+    <div class="mascot" id="emoji" aria-hidden="true">🏆</div>
+    <h1 id="etitle">Tahniah!</h1>
+    <div class="ringwrap">
+      <svg class="ring" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" fill="none" stroke="#e6ecf5" stroke-width="12"/><circle id="rg" cx="60" cy="60" r="52" fill="none" stroke="#ff9f1c" stroke-width="12" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="326.7" transform="rotate(-90 60 60)"/></svg>
+      <div class="rtxt"><span id="fscore">0</span><small>daripada 50</small></div>
+    </div>
+    <div class="stars" id="stars"></div>
+    <p id="emsg" style="font-weight:700;margin:4px 0"></p>
+    <div class="stats">
+      <div class="stat"><small>✅ Betul</small><span id="sb">0</span>/10</div>
+      <div class="stat"><small>🎯 Ketepatan</small><span id="sa">0</span>%</div>
+      <div class="stat"><small>🔥 Rentak Terbaik</small><span id="ss">0</span></div>
+    </div>
+    <div class="stats" style="grid-template-columns:1fr 1fr">
+      <div class="stat"><small>📖 Petikan 1</small><span id="p1">0</span>/25</div>
+      <div class="stat"><small>📖 Petikan 2</small><span id="p2">0</span>/25</div>
+    </div>
+    <h2>🏅 Lencana Pencapaian (<span id="bn">0</span>/7)</h2>
+    <div id="bgrid" class="bgrid"></div>
+    <button class="btn" onclick="location.reload()">Main Semula 🔁</button>
+  </div>
+</section>
+</main>
+
+<script>
+const DATA=[
+{t:"Hari Sukan di Sekolah",txt:"Hari ini ialah Hari Sukan di Sekolah Kebangsaan Seri Mutiara. Cuaca sangat cerah. Ali bangun awal dan bersarapan nasi lemak. Dia memakai baju sukan berwarna biru. Ali menyertai acara lumba lari 100 meter. Dia berlatih setiap petang bersama kawannya, Hafiz. Semasa perlumbaan, Ali berlari sekuat hati. Akhirnya, dia berjaya mendapat tempat pertama. Ali sangat gembira. Ibu dan ayahnya berasa bangga melihat kejayaannya.",
+q:[
+{q:"Apakah nama sekolah Ali?",o:["Sekolah Kebangsaan Seri Intan","Sekolah Kebangsaan Seri Mutiara","Sekolah Kebangsaan Seri Permata"],a:1},
+{q:"Apakah sarapan Ali pada pagi itu?",o:["Roti canai","Mi goreng","Nasi lemak"],a:2},
+{q:"Siapakah kawan yang berlatih bersama Ali?",o:["Hafiz","Hakim","Farid"],a:0},
+{q:"Apakah tempat yang Ali dapat dalam perlumbaan?",o:["Tempat kedua","Tempat pertama","Tempat ketiga"],a:1},
+{q:"Mengapakah Ali berjaya menang?",o:["Dia berlatih setiap petang","Dia bangun lewat","Dia tidak makan pagi"],a:0}]},
+{t:"Kucing Kesayangan Mira",txt:"Mira mempunyai seekor kucing bernama Comel. Bulu Comel berwarna putih dan lembut. Setiap pagi, Mira memberi Comel makan ikan dan susu. Pada waktu petang, mereka bermain bola di halaman rumah. Suatu hari, Comel hilang. Mira berasa sangat sedih lalu mencarinya ke seluruh kampung. Akhirnya, Mira menjumpai Comel sedang tidur di bawah pokok mangga. Mira memeluk Comel dengan gembira. Sejak hari itu, Mira sentiasa menjaga Comel dengan baik.",
+q:[
+{q:"Apakah nama kucing Mira?",o:["Comel","Putih","Manja"],a:0},
+{q:"Apakah warna bulu kucing itu?",o:["Hitam","Putih","Kuning"],a:1},
+{q:"Apakah yang Mira dan Comel main pada waktu petang?",o:["Layang-layang","Bola","Congkak"],a:1},
+{q:"Di manakah Mira menjumpai Comel?",o:["Di dalam rumah","Di tepi sungai","Di bawah pokok mangga"],a:2},
+{q:"Bagaimanakah perasaan Mira apabila Comel hilang?",o:["Sedih","Marah","Gembira"],a:0}]}
+];
+
+const SK="#f2b88c",INK="#1d2b53";
+const runner=(x,y,s,shirt,short,hair,num)=>{const L=(d,w,c)=>`<path d="${d}" fill="none" stroke="${INK}" stroke-width="${w+3.5}"/><path d="${d}" fill="none" stroke="${c}" stroke-width="${w}"/>`;const shoe=(cx,cy,r)=>`<ellipse cx="${cx}" cy="${cy}" rx="10" ry="5.5" fill="#fff" stroke="${INK}" stroke-width="2.5" transform="rotate(${r} ${cx} ${cy})"/><path d="M${cx-4} ${cy+1}h8" stroke="#ef5350" stroke-width="2" transform="rotate(${r} ${cx} ${cy})"/>`;const hand=(cx,cy)=>`<circle cx="${cx}" cy="${cy}" r="5" fill="${SK}" stroke="${INK}" stroke-width="2.5"/>`;
+return `<g transform="translate(${x} ${y}) scale(${s})" stroke-linecap="round" stroke-linejoin="round"><path d="M-48 -34h-20M-52 -20h-26M-48 -6h-16" stroke="#fff" stroke-width="3.5" opacity=".9"/><ellipse cx="-18" cy="38" rx="12" ry="3.5" fill="#000" opacity=".15"/><circle cx="-52" cy="22" r="4" fill="#fff" opacity=".7"/><circle cx="-60" cy="14" r="2.5" fill="#fff" opacity=".7"/>${L("M0 0L-20 16L-40 8",9,SK)}${shoe(-44,7,-25)}${L("M0 -34L-16 -22L-30 -10",7,SK)}${hand(-31,-9)}<path d="M-2 -6L3 -38" stroke="${INK}" stroke-width="30"/><path d="M-2 -6L3 -38" stroke="${shirt}" stroke-width="25"/><text x="1" y="-17" font-size="17" font-weight="bold" text-anchor="middle" fill="#fff" stroke="${INK}" stroke-width="1.5" paint-order="stroke">${num}</text><path d="M-14 -4h28v15h-28z" fill="${short}" stroke="${INK}" stroke-width="2.5"/>${L("M2 2L26 4L22 34",9,SK)}${shoe(26,38,10)}${L("M3 -33L19 -22L34 -36",7,SK)}${hand(35,-37)}<circle cx="8" cy="-61" r="20" fill="${SK}" stroke="${INK}" stroke-width="3"/><path d="M-12 -64A20 20 0 0 1 28 -64Q20 -84 8 -77Q-4 -84 -12 -64Z" fill="${hair}" stroke="${INK}" stroke-width="2.5"/><path d="M-11 -68Q8 -76 27 -68" fill="none" stroke="${INK}" stroke-width="7"/><path d="M-11 -68Q8 -76 27 -68" fill="none" stroke="${shirt}" stroke-width="4"/><ellipse cx="2" cy="-59" rx="5.5" ry="7" fill="#fff" stroke="${INK}" stroke-width="2"/><circle cx="3.5" cy="-58" r="3.4" fill="${INK}"/><circle cx="4.5" cy="-59.5" r="1.2" fill="#fff"/><ellipse cx="17" cy="-59" rx="5.5" ry="7" fill="#fff" stroke="${INK}" stroke-width="2"/><circle cx="18.5" cy="-58" r="3.4" fill="${INK}"/><circle cx="19.5" cy="-59.5" r="1.2" fill="#fff"/><circle cx="-2" cy="-50" r="3.8" fill="#ff8a9a" opacity=".75"/><circle cx="23" cy="-50" r="3.8" fill="#ff8a9a" opacity=".75"/><path d="M5 -50Q10 -41 17 -50Z" fill="#c62828" stroke="${INK}" stroke-width="2"/></g>`};
+const flowers=(xs,y)=>xs.map((x,i)=>{const c=["#ff6fa5","#ffd23f","#fff","#ff9f1c","#b388ff"][i%5];const pet=[0,72,144,216,288].map(r=>`<ellipse cx="${x}" cy="${y-5}" rx="3.4" ry="5" fill="${c}" stroke="${INK}" stroke-width="1.1" transform="rotate(${r} ${x} ${y})"/>`).join("");return `<path d="M${x} ${y}v15" stroke="#2e7d32" stroke-width="2.4" stroke-linecap="round"/><path d="M${x} ${y+10}q-7 -1 -8 -7q7 0 8 7z" fill="#43a047"/>${pet}<circle cx="${x}" cy="${y}" r="2.8" fill="#ff9800" stroke="${INK}" stroke-width="1"/>`}).join("");
+const heart=(x,y,s)=>`<path transform="translate(${x} ${y}) scale(${s})" d="M0 -6C-10 -18-22 -2 0 12C22 -2 10 -18 0 -6Z" fill="#ef5350" stroke="#fff" stroke-width="2"/>`;
+const bfly=(x,y,r,s,c1,c2)=>`<g transform="translate(${x} ${y}) rotate(${r}) scale(${s})" stroke-linecap="round" stroke-linejoin="round">${[1,-1].map(m=>`<g transform="scale(${m} 1)"><path d="M1 -1C4 -18 24 -26 30 -12C33 -2 18 6 1 3Z" fill="${c1}" stroke="${INK}" stroke-width="1.6"/><path d="M3 -2C7 -13 20 -18 24 -10C26 -4 16 2 3 1Z" fill="#fff" opacity=".45"/><circle cx="19" cy="-9" r="2.4" fill="#fff"/><circle cx="12" cy="-4" r="1.6" fill="#fff"/><path d="M1 4C12 4 24 10 20 21C16 28 4 20 1 9Z" fill="${c2}" stroke="${INK}" stroke-width="1.6"/><circle cx="14" cy="15" r="2.2" fill="#fff"/></g>`).join("")}<ellipse cx="0" cy="4" rx="2.2" ry="9" fill="${INK}"/><circle cx="0" cy="-7" r="3" fill="${INK}"/><path d="M-1 -9Q-4 -17 -9 -16M1 -9Q4 -17 9 -16" stroke="${INK}" stroke-width="1.4" fill="none"/><circle cx="-9.5" cy="-16" r="1.3" fill="${INK}"/><circle cx="9.5" cy="-16" r="1.3" fill="${INK}"/></g>`;
+const IMG=[
+`<svg viewBox="0 0 400 220" role="img" aria-label="Gambar murid berlumba lari di Hari Sukan"><rect width="400" height="220" fill="#7fd8ff"/><g stroke="#ffd23f" stroke-width="4" stroke-linecap="round"><path d="M340 10v8M340 72v8M310 45h-8M378 45h8M319 24l-6-6M361 66l6 6M361 24l6-6M319 66l-6 6"/></g><circle cx="340" cy="45" r="21" fill="#ffd23f" stroke="#ffb300" stroke-width="3"/><g fill="#fff"><ellipse cx="70" cy="30" rx="32" ry="12"/><ellipse cx="92" cy="22" rx="20" ry="11"/><ellipse cx="200" cy="40" rx="28" ry="11"/><ellipse cx="218" cy="33" rx="17" ry="10"/></g><path d="M0 118Q80 78 170 116T330 108T400 114V150H0Z" fill="#8fdc7a"/><rect x="20" y="86" width="115" height="52" fill="#ffe08a" stroke="${INK}" stroke-width="3"/><path d="M12 88L77 58L142 88Z" fill="#ef5350" stroke="${INK}" stroke-width="3" stroke-linejoin="round"/><rect x="67" y="108" width="20" height="30" fill="#8d5a2b" stroke="${INK}" stroke-width="2"/><rect x="31" y="98" width="24" height="18" fill="#b3e5fc" stroke="${INK}" stroke-width="2"/><rect x="99" y="98" width="24" height="18" fill="#b3e5fc" stroke="${INK}" stroke-width="2"/><path d="M77 58V34" stroke="${INK}" stroke-width="2.5"/><path d="M77 34L98 40L77 46Z" fill="#ff6fa5"/><rect y="134" width="400" height="86" fill="#5fcf5f"/><path d="M0 150H400V220H0Z" fill="#e0894b"/><path d="M0 173H400M0 196H400" stroke="#fff" stroke-width="3" stroke-dasharray="16 9"/><path d="M0 134Q8 124 16 134M60 134Q68 120 76 134" fill="none"/><g fill="#fff" stroke="#1d2b53" stroke-width="1"><rect x="338" y="150" width="6" height="70" fill="#fff"/><rect x="338" y="150" width="3" height="3" fill="#1d2b53" stroke="none"/><rect x="341" y="153" width="3" height="3" fill="#1d2b53" stroke="none"/><rect x="338" y="156" width="3" height="3" fill="#1d2b53" stroke="none"/><rect x="341" y="159" width="3" height="3" fill="#1d2b53" stroke="none"/><rect x="338" y="162" width="3" height="3" fill="#1d2b53" stroke="none"/><rect x="341" y="165" width="3" height="3" fill="#1d2b53" stroke="none"/><rect x="338" y="168" width="3" height="3" fill="#1d2b53" stroke="none"/><rect x="341" y="171" width="3" height="3" fill="#1d2b53" stroke="none"/><rect x="338" y="174" width="3" height="3" fill="#1d2b53" stroke="none"/><rect x="341" y="177" width="3" height="3" fill="#1d2b53" stroke="none"/><rect x="338" y="180" width="3" height="3" fill="#1d2b53" stroke="none"/><rect x="341" y="183" width="3" height="3" fill="#1d2b53" stroke="none"/><rect x="338" y="186" width="3" height="3" fill="#1d2b53" stroke="none"/><rect x="341" y="189" width="3" height="3" fill="#1d2b53" stroke="none"/><rect x="338" y="192" width="3" height="3" fill="#1d2b53" stroke="none"/><rect x="341" y="195" width="3" height="3" fill="#1d2b53" stroke="none"/><rect x="338" y="198" width="3" height="3" fill="#1d2b53" stroke="none"/><rect x="341" y="201" width="3" height="3" fill="#1d2b53" stroke="none"/><rect x="338" y="204" width="3" height="3" fill="#1d2b53" stroke="none"/><rect x="341" y="207" width="3" height="3" fill="#1d2b53" stroke="none"/><rect x="338" y="210" width="3" height="3" fill="#1d2b53" stroke="none"/><rect x="341" y="213" width="3" height="3" fill="#1d2b53" stroke="none"/><rect x="338" y="216" width="3" height="3" fill="#1d2b53" stroke="none"/></g><path d="M326 138V176M370 138V176" stroke="${INK}" stroke-width="3" stroke-linecap="round"/><rect x="326" y="136" width="44" height="15" rx="3" fill="#fff" stroke="${INK}" stroke-width="2"/><text x="348" y="147.5" font-size="10" font-weight="bold" text-anchor="middle" fill="#e8336d">TAMAT</text>${runner(95,158,.55,"#4caf50","#37474f","#2b1b17",3)}${runner(175,178,.6,"#ef5350","#37474f","#5d4037",2)}${runner(255,193,.66,"#2979ff","#fff","#1b1b1b",1)}<g fill="#ff6fa5"><circle cx="30" cy="160" r="3"/><circle cx="210" cy="148" r="3" fill="#ffd23f"/><circle cx="140" cy="146" r="3" fill="#fff"/></g><text x="160" y="22" font-size="13" font-weight="bold" fill="#e8336d">Hari Sukan!</text></svg>`,
+`<svg viewBox="0 0 400 220" role="img" aria-label="Gambar Mira bermain bola bersama kucing Comel di bawah pokok mangga"><defs><radialGradient id="g-skin" cx=".4" cy=".32" r=".8"><stop offset="0" stop-color="#ffe3cb"/><stop offset=".6" stop-color="#f7c49f"/><stop offset="1" stop-color="#e5a077"/></radialGradient><radialGradient id="g-cheek" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ff7f8a" stop-opacity=".75"/><stop offset="1" stop-color="#ff7f8a" stop-opacity="0"/></radialGradient><linearGradient id="g-hair" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6a3d22"/><stop offset=".55" stop-color="#3f2213"/><stop offset="1" stop-color="#24120a"/></linearGradient><linearGradient id="g-dress" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#b995ff"/><stop offset=".6" stop-color="#8e5be8"/><stop offset="1" stop-color="#6a3fc4"/></linearGradient><linearGradient id="g-shoe" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9db3c8"/><stop offset="1" stop-color="#5a7188"/></linearGradient><radialGradient id="g-iris" cx=".5" cy=".4" r=".6"><stop offset="0" stop-color="#b87a3a"/><stop offset=".7" stop-color="#7a4a22"/><stop offset="1" stop-color="#3f2410"/></radialGradient><filter id="f-blur" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="2"/></filter></defs><rect width="400" height="220" fill="#bfe8ff"/><g stroke="#ffd23f" stroke-width="3.5" stroke-linecap="round"><path d="M28 4v5M28 47v5M6 28h5M50 28h5M12 12l4 4M44 44l4 4M44 12l-4 4M12 44l4-4"/></g><circle cx="28" cy="28" r="15" fill="#ffd23f" stroke="#ffb300" stroke-width="2.5"/><circle cx="23" cy="26" r="1.8" fill="${INK}"/><circle cx="33" cy="26" r="1.8" fill="${INK}"/><path d="M23 32Q28 37 33 32" stroke="${INK}" stroke-width="2" fill="none"/><circle cx="19" cy="31" r="2.6" fill="#ff8a9a" opacity=".8"/><circle cx="37" cy="31" r="2.6" fill="#ff8a9a" opacity=".8"/>${[84,76,68,60,52].map((r,i)=>`<path d="M${150-r} 140A${r} ${r} 0 0 1 ${150+r} 140" fill="none" stroke="${["#ef5350","#ff9f1c","#ffd23f","#5fcf5f","#4fc3f7"][i]}" stroke-width="8" opacity=".8"/>`).join("")}<g fill="#fff"><ellipse cx="250" cy="30" rx="30" ry="13"/><ellipse cx="270" cy="22" rx="19" ry="12"/><ellipse cx="85" cy="22" rx="20" ry="9"/></g><circle cx="244" cy="30" r="1.8" fill="${INK}"/><circle cx="258" cy="30" r="1.8" fill="${INK}"/><path d="M247 34Q251 38 255 34" stroke="${INK}" stroke-width="1.6" fill="none"/><path d="M0 128Q90 100 190 130T400 120V150H0Z" fill="#8fdc7a"/><rect y="140" width="400" height="80" fill="#5fcf5f"/><path d="M0 180Q100 166 200 182T400 178V220H0Z" fill="#3fb34f"/><rect x="10" y="98" width="58" height="46" fill="#fff3c4" stroke="${INK}" stroke-width="3"/><path d="M3 101L39 70L75 101Z" fill="#ff8a65" stroke="${INK}" stroke-width="3" stroke-linejoin="round"/><rect x="31" y="116" width="16" height="28" rx="3" fill="#8d5a2b" stroke="${INK}" stroke-width="2"/>${heart(39,106,.35)}<rect x="52" y="108" width="12" height="12" fill="#b3e5fc" stroke="${INK}" stroke-width="2"/><path d="M315 160Q322 122 318 94L352 94Q346 124 356 160Z" fill="#8d5a2b" stroke="${INK}" stroke-width="3"/><g fill="#2e9e4a" stroke="${INK}" stroke-width="3"><circle cx="300" cy="82" r="30"/><circle cx="366" cy="82" r="30"/><circle cx="333" cy="56" r="36"/></g><g fill="#2e9e4a"><circle cx="300" cy="82" r="27"/><circle cx="366" cy="82" r="27"/><circle cx="333" cy="56" r="33"/><circle cx="333" cy="90" r="26"/></g><g fill="#4cc366"><circle cx="322" cy="46" r="14"/><circle cx="290" cy="76" r="9"/><circle cx="360" cy="72" r="9"/></g><g stroke="#e65100" stroke-width="1.5"><ellipse cx="308" cy="100" rx="7" ry="9" fill="#ffb300"/><ellipse cx="352" cy="98" rx="7" ry="9" fill="#ffb300"/><ellipse cx="333" cy="72" rx="7" ry="9" fill="#ffb300"/><ellipse cx="300" cy="64" rx="7" ry="9" fill="#ffb300"/></g>${flowers([18,46,80,226,298,350,383],188)}<g transform="translate(172 187) scale(.8) translate(-190 -184)"><ellipse cx="190" cy="198" rx="15" ry="4" fill="#000" opacity=".15"/><path d="M168 178h-10M166 186h-14" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity="0"/><circle cx="190" cy="184" r="14" fill="#fff" stroke="${INK}" stroke-width="2.5"/><path d="M190 177l7 5-3 8h-8l-3-8z" fill="#ff6fa5" stroke="${INK}" stroke-width="1.8"/><path d="M190 177v-8M197 182l8-3M194 190l5 8M186 190l-5 8M183 182l-8-3" stroke="${INK}" stroke-width="1.8"/></g><g><g transform="translate(118 190) scale(.86)"><ellipse cx="2" cy="0" rx="30" ry="5" fill="#1d2b53" opacity=".22" filter="url(#f-blur)"/><path d="M-26 -98Q-32 -130 0 -130Q32 -130 26 -98Q34 -78 30 -56Q16 -62 0 -62Q-16 -62 -30 -56Q-34 -78 -26 -98Z" fill="#24120a"/><rect x="-10" y="-24" width="10" height="17" rx="5" fill="url(#g-skin)" stroke="#c98a62" stroke-width="1" stroke-opacity=".55"/><rect x="2" y="-24" width="10" height="17" rx="5" fill="url(#g-skin)" stroke="#c98a62" stroke-width="1" stroke-opacity=".55"/><rect x="-11" y="-15" width="12" height="10" rx="4" fill="#fffaf0" stroke="#e4d8c4" stroke-width="1"/><rect x="1" y="-15" width="12" height="10" rx="4" fill="#fffaf0" stroke="#e4d8c4" stroke-width="1"/><ellipse cx="-6" cy="-3.5" rx="11.5" ry="6" fill="url(#g-shoe)"/><ellipse cx="8" cy="-3.5" rx="11.5" ry="6" fill="url(#g-shoe)"/><path d="M-14 -6Q-6 -11 2 -6M0 -6Q8 -11 16 -6" stroke="#46586b" stroke-width="1.8" fill="none"/><ellipse cx="-9" cy="-6" rx="4" ry="1.6" fill="#fff" opacity=".35"/><ellipse cx="5" cy="-6" rx="4" ry="1.6" fill="#fff" opacity=".35"/><path d="M-18 -62Q-31 -54 -33 -40Q-28 -35 -24 -40Q-22 -50 -12 -56Z" fill="url(#g-skin)" stroke="#c98a62" stroke-width="1" stroke-opacity=".55"/><circle cx="-30" cy="-37" r="5.2" fill="url(#g-skin)" stroke="#c98a62" stroke-width="1" stroke-opacity=".55"/><path d="M18 -62Q31 -54 33 -40Q28 -35 24 -40Q22 -50 12 -56Z" fill="url(#g-skin)" stroke="#c98a62" stroke-width="1" stroke-opacity=".55"/><circle cx="30" cy="-37" r="5.2" fill="url(#g-skin)" stroke="#c98a62" stroke-width="1" stroke-opacity=".55"/><path d="M-12 -70Q0 -74 12 -70L14 -54Q27 -46 33 -22Q0 -13 -33 -22Q-27 -46 -14 -54Z" fill="url(#g-dress)"/><path d="M-6 -50Q-9 -36 -14 -22M7 -50Q10 -36 15 -22" stroke="#4e2a9c" stroke-width="2.2" fill="none" opacity=".35"/><ellipse cx="-12" cy="-38" rx="6" ry="13" fill="#fff" opacity=".16" transform="rotate(12 -12 -38)"/><g fill="#fff3d6" opacity=".85"><circle cx="-18" cy="-32" r="2"/><circle cx="-4" cy="-28" r="2"/><circle cx="12" cy="-34" r="2"/><circle cx="21" cy="-26" r="2"/><circle cx="3" cy="-42" r="2"/></g><path d="M-33 -22Q-25 -17 -16 -21Q-8 -16 0 -20Q8 -16 16 -21Q25 -17 33 -22" fill="none" stroke="#fff3d6" stroke-width="3.2" stroke-linecap="round"/><path d="M-14 -56Q0 -52 14 -56L14 -50Q0 -46 -14 -50Z" fill="#ffd978"/><ellipse cx="-5" cy="-51" rx="4.5" ry="3" fill="#ffc94a" transform="rotate(-20 -5 -51)"/><ellipse cx="5" cy="-51" rx="4.5" ry="3" fill="#ffc94a" transform="rotate(20 5 -51)"/><circle cx="0" cy="-51" r="2.3" fill="#f5a623"/><circle cx="-15" cy="-64" r="8" fill="url(#g-dress)"/><circle cx="15" cy="-64" r="8" fill="url(#g-dress)"/><ellipse cx="-17" cy="-67" rx="3" ry="2" fill="#fff" opacity=".3"/><ellipse cx="13" cy="-67" rx="3" ry="2" fill="#fff" opacity=".3"/><path d="M-9 -71Q0 -64 9 -71L6 -73Q0 -68 -6 -73Z" fill="#fffaf0"/><rect x="-4.5" y="-75" width="9" height="9" fill="url(#g-skin)"/><ellipse cx="0" cy="-70" rx="6" ry="2.5" fill="#d99a72" opacity=".35"/><path d="M-24 -98Q-34 -80 -30 -62Q-19 -68 -20 -90Z" fill="url(#g-hair)"/><path d="M24 -98Q34 -80 30 -62Q19 -68 20 -90Z" fill="url(#g-hair)"/><circle cx="-24.5" cy="-93" r="5" fill="url(#g-skin)" stroke="#c98a62" stroke-width="1" stroke-opacity=".55"/><circle cx="24.5" cy="-93" r="5" fill="url(#g-skin)" stroke="#c98a62" stroke-width="1" stroke-opacity=".55"/><circle cx="0" cy="-96" r="25" fill="url(#g-skin)" stroke="#c98a62" stroke-width="1" stroke-opacity=".55"/><circle cx="-14" cy="-85" r="9.5" fill="url(#g-cheek)"/><circle cx="14" cy="-85" r="9.5" fill="url(#g-cheek)"/><ellipse cx="-7" cy="-111" rx="9" ry="4" fill="#fff" opacity=".2"/><path d="M-16 -103.5Q-10 -107 -4 -104.5" fill="none" stroke="#4a2a14" stroke-width="2" stroke-linecap="round"/><ellipse cx="-10" cy="-94" rx="5.6" ry="6.4" fill="#fff"/><circle cx="-9.6" cy="-93.4" r="4.3" fill="url(#g-iris)"/><circle cx="-9.6" cy="-93.4" r="2.1" fill="#140b07"/><circle cx="-10.8" cy="-95.2" r="1.5" fill="#fff"/><circle cx="-8.2" cy="-92" r=".7" fill="#fff" opacity=".8"/><path d="M-16 -94.8Q-10 -102.6 -4 -94.8" fill="none" stroke="#2a170c" stroke-width="2.6" stroke-linecap="round"/><path d="M-16 -94.8L-18.2 -97.2" stroke="#2a170c" stroke-width="1.8" stroke-linecap="round"/><path d="M-14.5 -88.4Q-10 -86.4 -5.5 -88.4" fill="none" stroke="#b9825e" stroke-width=".9" opacity=".6"/><path d="M4 -103.5Q10 -107 16 -104.5" fill="none" stroke="#4a2a14" stroke-width="2" stroke-linecap="round"/><ellipse cx="10" cy="-94" rx="5.6" ry="6.4" fill="#fff"/><circle cx="10.4" cy="-93.4" r="4.3" fill="url(#g-iris)"/><circle cx="10.4" cy="-93.4" r="2.1" fill="#140b07"/><circle cx="9.2" cy="-95.2" r="1.5" fill="#fff"/><circle cx="11.8" cy="-92" r=".7" fill="#fff" opacity=".8"/><path d="M4 -94.8Q10 -102.6 16 -94.8" fill="none" stroke="#2a170c" stroke-width="2.6" stroke-linecap="round"/><path d="M16 -94.8L18.2 -97.2" stroke="#2a170c" stroke-width="1.8" stroke-linecap="round"/><path d="M5.5 -88.4Q10 -86.4 14.5 -88.4" fill="none" stroke="#b9825e" stroke-width=".9" opacity=".6"/><ellipse cx="0" cy="-88" rx="2.6" ry="2" fill="#e8a27c" opacity=".8"/><ellipse cx="-.6" cy="-88.8" rx="1.1" ry=".8" fill="#fff" opacity=".6"/><path d="M-5.5 -82Q0 -74 5.5 -82Z" fill="#a82d2d"/><path d="M-3.8 -81.4H3.8V-80H-3.8Z" fill="#fff"/><ellipse cx="0" cy="-77" rx="2.6" ry="1.6" fill="#ff8a8a"/><path d="M-6 -82.2Q0 -80.6 6 -82.2" stroke="#8a2424" stroke-width="1" fill="none"/><path d="M-25 -95Q-30 -126 0 -126Q30 -126 25 -95Q21 -103 11 -107Q-3 -105 -11 -118Q-17 -103 -25 -95Z" fill="url(#g-hair)"/><path d="M-9 -121Q0 -125 10 -121M-19 -108Q-15 -116 -10 -119M14 -118Q20 -114 22 -106" stroke="#c9915c" stroke-width="2.4" fill="none" stroke-linecap="round" opacity=".75"/><path d="M-27 -80Q-27 -72 -24 -66M27 -80Q27 -72 24 -66" stroke="#a87444" stroke-width="1.6" fill="none" opacity=".6"/><g transform="translate(-18 -112)"><path d="M0 0L-9 -5L-9 5Z M0 0L9 -5L9 5Z" fill="#ff6fa5"/><circle cx="0" cy="0" r="3" fill="#ff3d86"/></g></g></g><g stroke-linecap="round" stroke-linejoin="round"><g transform="translate(228 192) scale(.9)"><path d="M25 -6Q45 -6 46 -22Q47 -36 40 -39" fill="none" stroke="#1a1018" stroke-width="10"/><path d="M25 -6Q45 -6 46 -22Q47 -36 40 -39" fill="none" stroke="#fdfcfa" stroke-width="6.4"/><path d="M-14 -40Q-19 -22 -17 -8Q-17 0 -9 0L16 0Q27 -2 27 -15Q27 -31 12 -40Z" fill="#fdfcfa" stroke="#1a1018" stroke-width="2.6"/><path d="M27 -15Q27 -31 12 -40Q23 -29 21 -13Q19 -3 11 -1L16 0Q27 -2 27 -15Z" fill="#ece3d8" opacity=".9"/><path d="M3 -8Q4 -20 15 -22" fill="none" stroke="#1a1018" stroke-width="2.6"/><path d="M4 -1Q9 -3 16 -3" fill="none" stroke="#1a1018" stroke-width="1.8"/><path d="M-10 -26Q-5 -14 -8 -5" fill="none" stroke="#1a1018" stroke-width="2.4"/><path d="M-2 -25Q-1 -14 -3 -5" fill="none" stroke="#1a1018" stroke-width="2.4"/><ellipse cx="-6" cy="-2.5" rx="8.5" ry="4" fill="#fdfcfa" stroke="#1a1018" stroke-width="2.4"/><path d="M-9 -1.5v-2.5M-5 -1.5v-2.5M-1 -1.5v-2.5" stroke="#1a1018" stroke-width="1.1"/><ellipse cx="0" cy="-37" rx="19" ry="5" fill="#ece3d8"/><path d="M-29 -60Q-31 -78 -22 -87Q-10 -85 -5 -75Z" fill="#fdfcfa" stroke="#1a1018" stroke-width="2.6"/><path d="M-26 -65Q-27 -78 -22 -83Q-15 -81 -10 -74Z" fill="#f79eab"/><path d="M-26 -65Q-27 -78 -22 -83Q-24 -74 -20 -69Z" fill="#e98795"/><path d="M29 -60Q31 -78 22 -87Q10 -85 5 -75Z" fill="#fdfcfa" stroke="#1a1018" stroke-width="2.6"/><path d="M26 -65Q27 -78 22 -83Q15 -81 10 -74Z" fill="#f79eab"/><path d="M10 -74Q15 -81 22 -83Q16 -78 14 -70Z" fill="#e98795"/><ellipse cx="0" cy="-56" rx="32" ry="23" fill="#fdfcfa" stroke="#1a1018" stroke-width="2.6"/><path d="M-30 -50Q-26 -38 -10 -34Q-24 -36 -31 -52Z" fill="#ece3d8" opacity=".9"/><circle cx="-21" cy="-46" r="4.4" fill="#f79eab"/><circle cx="21" cy="-46" r="4.4" fill="#f79eab"/><circle cx="-13" cy="-56" r="6.8" fill="#1a1018"/><circle cx="-10" cy="-58.6" r="2.4" fill="#fff"/><path d="M-21 -60Q-14.5 -69 -7.5 -61.5" fill="none" stroke="#1a1018" stroke-width="3" stroke-linecap="round"/><circle cx="13" cy="-56" r="6.8" fill="#1a1018"/><circle cx="10" cy="-58.6" r="2.4" fill="#fff"/><path d="M21 -60Q14.5 -69 7.5 -61.5" fill="none" stroke="#1a1018" stroke-width="3" stroke-linecap="round"/><path d="M-3.2 -50.5Q0 -52.4 3.2 -50.5Q2.2 -46.4 0 -45.8Q-2.2 -46.4 -3.2 -50.5Z" fill="#ffa6b8"/><path d="M0 -45.8V-44M0 -44Q-2 -42.2 -4.2 -43.4M0 -44Q2 -42.2 4.2 -43.4" fill="none" stroke="#1a1018" stroke-width="1.3"/><path d="M-32 -57L-46 -58.5M-31 -52L-46 -49M-29 -47L-42 -41M32 -57L46 -58.5M31 -52L46 -49M29 -47L42 -41" stroke="#1a1018" stroke-width="2.2"/></g></g>${heart(160,44,.55)}${bfly(232,76,-12,.8,"#ff7eb3","#ffb3d1")}${bfly(52,150,8,.7,"#7c9cff","#b3c7ff")}</svg>`];
+
+const BADGES=[
+{id:"first",i:"⭐",n:"Langkah Pertama",d:"Jawab satu soalan dengan betul"},
+{id:"s3",i:"🔥",n:"Rentak 3",d:"3 jawapan betul berturut-turut"},
+{id:"s5",i:"⚡",n:"Rentak 5",d:"5 jawapan betul berturut-turut"},
+{id:"comeback",i:"💪",n:"Tak Putus Asa",d:"Betul selepas satu jawapan salah"},
+{id:"p1",i:"🥇",n:"Petikan Sempurna",d:"Dapat 25/25 dalam satu petikan"},
+{id:"reader",i:"📚",n:"Pembaca Rajin",d:"Siapkan kedua-dua petikan"},
+{id:"champ",i:"🏆",n:"Juara 50/50",d:"Dapat markah penuh"}];
+const $=id=>document.getElementById(id);
+const Q=DATA.map(p=>p.q);
+const fin=[false,false],ps=[0,0],got=new Set();
+let cur=0,qi=0,locked=false,streak=0,best=0,lastWrong=false,soundOn=true,AC=null;
+const total=()=>ps[0]+ps[1];
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+
+/* ---- bunyi ---- */
+function ac(){try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();if(AC.state==="suspended")AC.resume()}catch(e){}return AC}
+function tone(f,t,d,type,v){if(!soundOn)return;const c=ac();if(!c)return;const o=c.createOscillator(),g=c.createGain(),st=c.currentTime+t;
+  o.type=type||"sine";o.frequency.value=f;g.gain.setValueAtTime(0,st);g.gain.linearRampToValueAtTime(v||.15,st+.02);g.gain.exponentialRampToValueAtTime(.001,st+d);
+  o.connect(g);g.connect(c.destination);o.start(st);o.stop(st+d+.05)}
+const SFX={
+ click:()=>tone(660,0,.08,"triangle"),
+ start:()=>[392,523,659,784].forEach((f,i)=>tone(f,i*.09,.2,"triangle")),
+ ok:()=>[523,659,784].forEach((f,i)=>tone(f,i*.09,.2,"triangle")),
+ bad:()=>{tone(240,0,.25,"sawtooth",.07);tone(170,.16,.3,"sawtooth",.07)},
+ badge:()=>[784,988,1175,1568].forEach((f,i)=>tone(f,i*.1,.22,"square",.06)),
+ done:()=>[523,659,784,1047].forEach((f,i)=>tone(f,i*.1,.25,"triangle")),
+ win:()=>[523,659,784,1047,784,1047,1319].forEach((f,i)=>tone(f,i*.12,.28,"triangle",.14))};
+const sfx=n=>{try{SFX[n]()}catch(e){}};
+$("mute").onclick=()=>{soundOn=!soundOn;$("mute").textContent=soundOn?"🔊":"🔇";$("mute").setAttribute("aria-pressed",!soundOn);$("mute").setAttribute("aria-label",soundOn?"Bunyi hidup":"Bunyi mati");sfx("click")};
+
+/* ---- muzik latar santai ---- */
+let musicOn=true,mTimer=null,mNext=0,mBar=0,MG=null;
+const mf=m=>440*Math.pow(2,(m-69)/12);
+const CHORDS=[[48,[60,64,67,72]],[45,[57,60,64,69]],[41,[53,57,60,65]],[43,[55,59,62,67]]];
+const MEL=[[76,0,79,0,76,74,0,72],[72,0,76,0,74,72,0,69],[69,0,72,0,72,74,0,77],[74,0,71,0,74,76,0,79],
+[79,0,76,0,72,0,76,0],[76,0,72,0,69,0,72,0],[77,0,74,0,72,0,69,0],[71,0,74,0,79,0,0,0]];
+const ARP=[0,1,2,3,2,1,2,1];
+function mn(m,t,d,type,v,a){const o=AC.createOscillator(),g=AC.createGain();o.type=type;o.frequency.value=mf(m);
+  g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(v,t+(a||.03));g.gain.exponentialRampToValueAtTime(.0008,t+d);
+  o.connect(g);g.connect(MG);o.start(t);o.stop(t+d+.05)}
+function mBarPlay(t){const [root,ch]=CHORDS[mBar%4],mel=MEL[mBar%8],e=.375;
+  mn(root,t,2.6,"sine",.07,.05);mn(root,t+1.5,1.4,"sine",.05,.05);
+  ch.slice(0,3).forEach(m=>mn(m-12,t,3,"sine",.016,.7));
+  ARP.forEach((k,i)=>mn(ch[k],t+i*e,.9,"sine",.03,.02));
+  mel.forEach((m,i)=>{if(m)mn(m,t+i*e,1.1,"triangle",.045,.03)});
+  mBar++}
+function mSched(){if(!AC)return;while(mNext<AC.currentTime+3.4){mBarPlay(mNext);mNext+=3}}
+function startMusic(){const c=ac();if(!c)return;
+  if(!MG){MG=c.createGain();MG.gain.value=0;MG.connect(c.destination)}
+  MG.gain.cancelScheduledValues(c.currentTime);MG.gain.setValueAtTime(MG.gain.value,c.currentTime);MG.gain.linearRampToValueAtTime(.9,c.currentTime+2);
+  mNext=Math.max(mNext,c.currentTime+.15);mSched();if(!mTimer)mTimer=setInterval(mSched,500)}
+function stopMusic(){if(!AC||!MG)return;MG.gain.cancelScheduledValues(AC.currentTime);MG.gain.setValueAtTime(MG.gain.value,AC.currentTime);MG.gain.linearRampToValueAtTime(0,AC.currentTime+.4)}
+$("mmute").onclick=()=>{musicOn=!musicOn;$("mmute").textContent=musicOn?"🎵":"🔕";$("mmute").setAttribute("aria-pressed",!musicOn);$("mmute").setAttribute("aria-label",musicOn?"Muzik hidup":"Muzik mati");
+  musicOn?startMusic():stopMusic();sfx("click")};
+document.addEventListener("visibilitychange",()=>{if(!AC)return;if(document.hidden)AC.suspend();else AC.resume()});
+
+/* ---- kesan visual ---- */
+function pop(t){const d=document.createElement("div");d.className="pop";d.textContent=t;document.body.appendChild(d);setTimeout(()=>d.remove(),1000)}
+function bump(){const p=$("pscore");p.classList.remove("bump");void p.offsetWidth;p.classList.add("bump")}
+function confetti(n){if(matchMedia("(prefers-reduced-motion:reduce)").matches)return;const E=["🎉","⭐","🎈","✨","🌟","🎊"];
+  for(let i=0;i<(n||44);i++){const s=document.createElement("span");s.className="cf";s.textContent=E[i%E.length];s.style.left=Math.random()*100+"vw";
+  s.style.fontSize=(18+Math.random()*22)+"px";s.style.animationDuration=(2.4+Math.random()*2)+"s";s.style.animationDelay=Math.random()*.8+"s";
+  document.body.appendChild(s);setTimeout(()=>s.remove(),5400)}}
+function toast(b){const t=document.createElement("div");t.className="toast";t.innerHTML='<span class="ti"></span><div><small>Lencana Baharu!</small><br><b class="tn"></b></div>';
+  t.querySelector(".ti").textContent=b.i;t.querySelector(".tn").textContent=b.n;$("toasts").appendChild(t);setTimeout(()=>t.remove(),3300)}
+function award(id){if(got.has(id))return;got.add(id);toast(BADGES.find(x=>x.id===id));setTimeout(()=>sfx("badge"),350);$("bcount").textContent=got.size;confetti(14)}
+
+/* ---- skrin ---- */
+function show(id){["start","menu","play","end"].forEach(x=>$(x).classList.toggle("hide",x!==id));
+  $("hud").classList.toggle("hide",id==="start"||id==="end");scrollTo(0,0)}
+function menu(msg){
+  show("menu");$("pic").innerHTML="";$("qlab").textContent="Petikan";$("qn").textContent=fin.filter(Boolean).length+"/2";
+  const b=$("banner");b.classList.toggle("hide",!msg);b.textContent=msg||"";
+  const g=$("menugrid");g.innerHTML="";
+  DATA.forEach((p,i)=>{
+    const c=document.createElement("button");c.className="pc";c.disabled=fin[i];
+    c.innerHTML=IMG[i]+"<h3></h3><span class='tag'></span>";
+    c.querySelector("h3").textContent="Petikan "+(i+1)+": "+p.t;
+    c.querySelector(".tag").textContent=fin[i]?"✅ Siap! "+ps[i]+"/25 markah":"▶️ Klik untuk mula";
+    c.onclick=()=>{sfx("click");open(i)};g.appendChild(c)});
+}
+function open(i){cur=i;qi=0;$("menugrid").innerHTML="";show("play");$("qlab").textContent="Soalan";load()}
+function drawBar(){const b=$("bar");b.innerHTML="";for(let k=0;k<5;k++){const i=document.createElement("i");i.className=k<qi?"on":k===qi?"cur":"";b.appendChild(i)}}
+function load(){
+  const q=Q[cur][qi],p=DATA[cur];locked=false;
+  $("ptitle").textContent="📖 Petikan "+(cur+1)+": "+p.t;
+  $("pic").innerHTML=IMG[cur];$("ptext").textContent=p.txt;
+  $("qn").textContent=(qi+1)+"/5";drawBar();
+  $("qtext").textContent=(qi+1)+". "+q.q;
+  $("fb").textContent="";$("owl").textContent="🦉";$("owl").className="owl";$("next").classList.add("hide");
+  $("opts").innerHTML="";
+  q.o.forEach((t,k)=>{
+    const b=document.createElement("button");b.className="opt";
+    b.innerHTML="<b>"+"ABC"[k]+"</b><span></span>";b.lastChild.textContent=t;
+    b.onclick=()=>answer(k,b);$("opts").appendChild(b)});
+}
+function answer(k,btn){
+  if(locked)return;locked=true;
+  const q=Q[cur][qi],bs=[...document.querySelectorAll(".opt")];
+  bs.forEach(b=>b.disabled=true);
+  if(k===q.a){
+    btn.classList.add("right");ps[cur]+=5;streak++;best=Math.max(best,streak);
+    $("score").textContent=total();$("streak").textContent=streak;bump();sfx("ok");pop("⭐+5");
+    $("fb").textContent=pick(["🎉 Betul! Hebat!","🌟 Tepat sekali!","👏 Bagus, teruskan!","🚀 Pintar betul!"])+" +5 markah";
+    $("fb").style.color="var(--ok)";$("owl").textContent="🥳";$("owl").className="owl ok";
+    award("first");if(streak===3)award("s3");if(streak===5)award("s5");if(lastWrong)award("comeback");
+    lastWrong=false;
+  }else{
+    btn.classList.add("wrong");bs[q.a].classList.add("right");streak=0;lastWrong=true;$("streak").textContent=0;sfx("bad");
+    $("fb").textContent="💡 Belum tepat. Jawapan betul ialah "+"ABC"[q.a]+". Tidak mengapa!";
+    $("fb").style.color="var(--bad)";$("owl").textContent="🤗";$("owl").className="owl no";
+  }
+  $("next").textContent=qi===4?"Selesai Petikan ✅":"Seterusnya ➡️";
+  $("next").classList.remove("hide");$("next").focus({preventScroll:true});
+}
+$("next").onclick=()=>{
+  sfx("click");
+  if(qi===4){
+    fin[cur]=true;if(ps[cur]===25)award("p1");
+    if(fin[0]&&fin[1]){award("reader");if(total()===50)award("champ");return finish()}
+    sfx("done");confetti(18);
+    return menu("🎉 Petikan "+(cur+1)+" siap! Markah: "+ps[cur]+"/25. Sekarang pilih petikan seterusnya!")}
+  qi++;load();
+};
+function finish(){
+  const t=total(),st=t>=45?3:t>=30?2:t>=15?1:0;
+  show("end");
+  $("stars").textContent="⭐".repeat(st)+"☆".repeat(3-st);
+  $("emoji").textContent=["🌱","😊","🥳","🏆"][st];
+  $("etitle").textContent=["Jom Cuba Lagi!","Bagus, Teruskan Usaha!","Tahniah, Pembaca Pintar!","Juara Membaca!"][st];
+  $("emsg").textContent=["Baca petikan perlahan-lahan, kamu pasti boleh!","Kamu sudah mula faham. Sedikit lagi!","Kamu membaca dengan baik sekali!","Kamu pembaca yang sangat hebat!"][st];
+  $("sb").textContent=t/5;$("sa").textContent=Math.round(t/50*100);$("ss").textContent=best;$("p1").textContent=ps[0];$("p2").textContent=ps[1];
+  $("bn").textContent=got.size;
+  const g=$("bgrid");g.innerHTML="";
+  BADGES.forEach((b,k)=>{const d=document.createElement("div");d.className="bd "+(got.has(b.id)?"on":"off");d.style.animationDelay=(k*.12)+"s";
+    d.innerHTML='<span class="ic"></span><b></b><br><span class="ds"></span>';d.querySelector(".ic").textContent=got.has(b.id)?b.i:"🔒";
+    d.querySelector("b").textContent=b.n;d.querySelector(".ds").textContent=b.d;g.appendChild(d)});
+  setTimeout(()=>{$("rg").style.strokeDashoffset=326.7*(1-t/50)},200);
+  const t0=performance.now();(function step(n){const p=Math.min(1,(n-t0)/1400);$("fscore").textContent=Math.round(t*p);if(p<1)requestAnimationFrame(step)})(t0);
+  if(st>=2){sfx("win");confetti(60)}else sfx("done");
+}
+$("go").onclick=()=>{ac();if(musicOn)startMusic();sfx("start");menu()};
+</script>
+</body>
+</html>
